@@ -1,0 +1,60 @@
+@mixin flex($flexDirection: row, $justifyContent: center, $alignItems: center) {
+    display: flex;
+    flex-direction: $flexDirection;
+    justify-content: $justifyContent;
+    align-items: $alignItems;
+}
+
+.textAreaContainer {
+    @include flex(row, center, flex-start); // flexDirection: row, justifyContent: flex-start, alignItems: flex-end
+    width: 100%;
+    overflow-y: hidden;
+    background-color: rgb(38, 28, 82);
+    padding: 10px 0;
+    gap: 20px;
+    border-radius: 10px;
+
+    .textArea {
+        margin-left: 1em;
+        font-family: "Roboto", sans-serif;
+        font-weight: 700;
+        font-style: normal;
+        color: rgb(243, 243, 243);
+
+        width: 100%;
+        font-size: 1.2em;
+        border: 1px solid transparent;
+        background-color: transparent;
+        scrollbar-color: transparent transparent;
+        border-radius: 5px;
+        resize: none;
+        outline: none;
+
+        &::placeholder {
+            color: rgb(150, 150, 150)
+        }
+    }
+
+    .iconBackground {
+        @include flex(); // flexDirection: row, justifyContent: center, alignItems: center
+        
+        border-radius: 10px;
+        background-color: transparent;
+        width: 3em;
+        height: 3em;
+        margin-right: 1em;
+        cursor: pointer;
+
+        .icon {
+            cursor: pointer;
+            font-size: 1.75em;
+            padding: 10px;
+            color: rgba(255, 255, 255, 0.769);
+            transition: color 0.3s;
+    
+            &:hover {
+                color: white;
+            }
+        }
+    }
+}

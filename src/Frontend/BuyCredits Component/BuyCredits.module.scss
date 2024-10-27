@@ -1,0 +1,132 @@
+// Mixin for Flexbox centering
+@mixin flex-center($flex-direction: column) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: $flex-direction;
+}
+
+// Buy credits container styling
+.buyCreditsContainer {
+  opacity: 0;
+  width: 100%;
+  @include flex-center(column);
+}
+
+.buyCredits {
+  width: 100%;
+  @include flex-center(column);
+}
+
+// Buy container grid layout
+.buyContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+// Card styling
+.card {
+  min-width: 360px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 3px solid transparent;
+  cursor: pointer;
+  transition: border 0.3s ease-in-out;
+
+  &:hover {
+    border: 3px solid white;
+  }
+}
+
+// Card image styling
+.cardImage {
+  width: 100%;
+  height: 150px;
+  overflow: hidden;
+  background-color: rgb(46, 42, 165);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  .icon {
+    color: white;
+    font-size: 7em;
+    transform: rotate(-22deg);
+  }
+}
+
+// Card info section
+.cardInfo {
+  padding: 5px 10px;
+  background-color: rgb(21, 18, 130);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  p {
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+}
+
+// Media queries for responsive design
+@media only screen and (max-width: 1550px) {
+  .buyContainer {
+    grid-template-columns: repeat(3, 1fr); // Target buyContainer for grid adjustments
+  }
+}
+
+@media only screen and (max-width: 1150px) {
+  .buyContainer {
+    grid-template-columns: repeat(2, 1fr); // Target buyContainer for grid adjustments
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .card {
+    min-width: 270px;
+    height: 220px;
+  }
+
+  .cardInfo {
+    flex-direction: column; // Stack content for smaller screens
+  }
+
+  .cardText {
+    width: 100%;
+    margin-top: 0;
+  }
+
+  .cardPrice {
+    margin-top: -15px;
+  }
+}
+
+@media only screen and (max-width: 580px) {
+  .buyContainer {
+    grid-template-columns: repeat(1, 1fr);
+    margin-bottom: 5em;
+  }
+
+  .card {
+    min-width: 200px;
+    height: 200px;
+  }
+
+  .cardInfo {
+    padding: 0 5px;
+  }
+
+  .cardText {
+    font-size: 0.8em;
+    margin-bottom: 10px;
+  }
+
+  .cardPrice {
+    font-size: 1.2em;
+  }
+}

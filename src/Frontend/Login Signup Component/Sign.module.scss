@@ -1,0 +1,158 @@
+// Mixin for center alignment using flexbox
+@mixin flex-center($flexDirection: column) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $flexDirection;
+}
+
+// Mixin for container properties
+@mixin full-screen-overlay($bgColor: rgba(0, 0, 0, 0.648), $blur: 5px) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $bgColor;
+    backdrop-filter: blur($blur);
+}
+
+// Mixin for button styles
+@mixin button-styles($bgColor) {
+    background-color: $bgColor;
+    font-size: 1.4em;
+    margin-bottom: 10px;
+    transition: background-color 0.3s;
+    padding: 10px 25px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+// Shared login/signup container styles
+.loginContainer, .signupContainer {
+    @include full-screen-overlay;
+    @include flex-center;
+}
+
+// Shared login/signup content styles
+.loginContent, .signupContent {
+    position: relative;
+    @include flex-center;
+    width: 100%;
+    max-width: 600px;
+    min-height: 300px;
+    padding: 20px;
+    background-color: rgb(143, 145, 146);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.546);
+}
+
+// Shared form content
+.formContent {
+    @include flex-center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+// Shared input group styles
+.inputGroup {
+    @include flex-center(row);
+    width: 90%;
+    margin-bottom: 20px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 3px 10px;
+}
+
+// Button styles
+.button {
+    @include button-styles(black);
+}
+
+.loginButton {
+    @include button-styles(rgb(48, 76, 170));
+
+    &:hover {
+        background-color: rgb(29, 55, 170);
+    }
+}
+
+.signupButton {
+    @include button-styles(rgb(170, 48, 48));
+
+    &:hover {
+        background-color: rgb(170, 29, 29);
+    }
+}
+
+.error {
+    color: red;
+    font-size: 1.2em;
+    margin-top: -10px;
+}
+
+.closeIcon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2rem;
+    color: red;
+    cursor: pointer;
+}
+
+.heading {
+    font-size: 2.4rem;
+    font-weight: bold;
+    margin: -8px 0;
+    color: white;
+}
+
+.icon {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.input {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    width: 100%;
+    padding: 10px;
+    color: black;
+    font-weight: 700;
+    font-size: 1.2rem;
+
+    &::placeholder {
+        color: rgb(104, 104, 104);
+        font-weight: 700;
+        font-size: 1rem;
+    }
+}
+
+.terms {
+    text-align: center;
+    color: white;
+    font-size: 1.4rem;
+}
+
+.link {
+    color: rgb(42, 233, 42);
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.redirectContainer {
+    p {
+        color: white;
+        font-size: 1.2em;
+        margin-top: 0px;
+        cursor: pointer;
+        text-align: center;
+    }
+}

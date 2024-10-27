@@ -1,0 +1,18 @@
+If you want only want to make sure the backend is working properly, make sure you're in the directory where you set your "server.js" file and use 
+"node server.js" to check for any errors. If there are, fix them asap, other than that, you're good!
+
+Needed for Backend:
+
+These are the commands needed for the backend to work perfectly:
+(They should all be installed after cloning the git repo, however if they aren't for some reason, install the missing dependencies)
+- npm install dotenv
+- npm install cors
+- npm install express
+- npm install mongoose
+- npm install axios
+- npm install bcrypt (it will be used to hash the password)
+- npm install concurrently --save-dev (to run both frontend and backend at the same time with only 'npm start')
+    add " "start": "concurrently \"npm run server\" \"npm run client\"" " at the bottom of the "scripts" value in package.json and make sure server and client are set up properly.
+
+Needed for Frontend:
+- npm install react-router-dom

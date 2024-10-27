@@ -1,0 +1,153 @@
+// Mixin for Flexbox centering
+@mixin flex-center($flex-direction: column) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $flex-direction;
+}
+
+// Base styles for the contact container
+.contactContainer {
+    opacity: 0;
+    position: fixed;
+    @include flex-center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.648);
+    backdrop-filter: blur(5px);
+}
+
+// Contact form styling
+.contact {
+    position: relative;
+    @include flex-center(column);
+    width: 100%;
+    max-width: 600px;
+    min-height: 300px;
+    padding: 30px;
+    background-color: rgb(217, 217, 217);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.546);
+}
+
+// Text alignment for headings and paragraphs
+.contactHeading, .contactText, .legalCompliance {
+    text-align: center;
+    font-weight: 600;
+}
+
+.contactHeading {
+    font-weight: bold;
+}
+
+.contactText {
+    margin-top: -10px;
+}
+
+// Username position
+.username {
+    position: absolute;
+    left: 20px;
+    top: 10px;
+    font-size: 1.2rem;
+    color: rgba(0, 0, 0, 0.71);
+}
+
+// Form layout
+.contactForm {
+    @include flex-center(column);
+    width: 100%;
+}
+
+// Input and TextArea styling
+.input, .textArea {
+    outline: none;
+    border: none;
+    resize: none;
+    width: 100%;
+    padding: 10px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    border-radius: 10px;
+}
+
+.textArea {
+    margin-top: 20px;
+    height: 220px;
+}
+
+// Button base styles
+.button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    background-color: black;
+    border: none;
+    color: white;
+    cursor: pointer;
+
+    &.send {
+        background-color: rgb(55, 176, 55);
+        transition: background-color 0.3s ease-in-out;
+
+        &:hover {
+            background-color: rgb(24, 160, 24);
+        }
+    }
+}
+
+// Interactive elements
+.interact {
+    cursor: pointer;
+    color: rgb(57, 136, 201);
+}
+
+// Close icon styling
+.close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: rgb(255, 0, 0);
+}
+
+// Media queries for responsiveness
+@media only screen and (max-width: 665px) {
+    .contact {
+        height: 100%;
+        border-radius: 0;
+    }
+
+    .contactHeading {
+        margin-top: 30px;
+        font-size: 2.8rem;
+    }
+
+    .close {
+        right: 50px;
+        top: 100px;
+        font-size: 2em;
+    }
+
+    .username {
+        left: 50px;
+        color: rgba(0, 0, 0, 0.472);
+    }
+
+    .input, .textArea {
+        width: 90%;
+    }
+
+    .contactText, .legalCompliance {
+        width: 80%;
+    }
+
+    .legalCompliance {
+        margin-top: 30px;
+    }
+}

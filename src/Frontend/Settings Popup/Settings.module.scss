@@ -1,0 +1,198 @@
+@keyframes slideLeft {
+    to {
+      transform: translateX(-100%);
+    }
+  }
+  
+  @keyframes slideOrigin {
+    to {
+      transform: translateX(0);
+    }
+  }
+  
+  @mixin flex($flexDirection: row, $justifyContent: center, $alignItems: center) {
+    display: flex;
+    flex-direction: $flexDirection;
+    justify-content: $justifyContent;
+    align-items: $alignItems;
+  }
+  
+  .messagesContainer {
+    @include flex(); // flex-direction: row, justify-content: center, align-items: center
+    margin-top: 7.5em;
+    width: 100%;
+    height: calc(95vh - 7em); // Ensures it fills the viewport height minus margin-top
+    gap: 0.5em;
+  
+    .messageRecipient {
+      @include flex(column); // flex-direction: column
+      width: 450px;
+      max-width: 90%;
+      height: 100%;
+      gap: 1em;
+      padding: 1em;
+      background-color: rgb(71, 62, 112);
+      border-radius: 10px;
+      overflow: hidden; // Ensures content stays within the container
+
+      .messageHeader {
+        width: 100%;
+        @include flex(column);
+
+        .settingsTab {
+            font-size: 1.5em;
+            width: 90%;
+            padding: 0.5em;
+            margin: 0.5em;
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+
+            &:hover {
+                background-color: rgb(107, 94, 169);
+            }
+    
+            &.selected {
+                background-color: rgb(53, 40, 103);
+            }
+        }
+      }
+  
+      .section {
+        color: white;
+        @include flex(row, flex-start, center); // flex-direction: row, justify-content: flex-start, align-items: center
+        gap: 1em;
+        width: 90%;
+  
+        .messageSection {
+          @include flex(); // flex-direction: row, justify-content: center, align-items: center
+          border-radius: 10px;
+          padding: 0 20px;
+          text-align: center;
+          text-wrap: nowrap;
+  
+          p {
+            font-weight: bold;
+            user-select: none
+          }
+        }
+      }
+  
+      .messageList {
+        @include flex(column, flex-start, flex-start); // flex-direction: column, justify-content: flex-start, align-items: flex-start
+        gap: 1em;
+        width: 100%;
+        flex-grow: 1; // This makes the `.messageList` take up all remaining space
+        padding: 1em;
+        overflow-y: auto; // Allows scrolling when content exceeds available height
+        overflow-x: hidden;
+        border-radius: 10px;
+  
+        .message {
+          @include flex(row, center); // flex-direction: row, justify-content: center, align-items: center
+          width: 100%;
+          gap: 1em;
+          padding: 10px 5px;
+          border-radius: 10px;
+          cursor: pointer;
+          transition: background-color 0.3s;
+  
+          &:hover {
+            background-color: rgb(107, 94, 169);
+          }
+  
+          &.selected {
+            background-color: rgb(53, 40, 103);
+          }
+  
+          .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+          }
+  
+          .messagePreview {
+            @include flex(column, flex-start, flex-start); // flex-direction: column, justify-content: flex-start, align-items: flex-start
+            flex: 1;
+            overflow: hidden;
+  
+            .username {
+              color: white;
+            }
+  
+            p {
+              overflow: hidden;
+              text-wrap: nowrap;
+              margin: 0;
+  
+              &.read {
+                color: rgb(197, 197, 197);
+              }
+  
+              &.unread {
+                animation: pulse 2s infinite;
+                color: white;
+                font-weight: bold;
+              }
+            }
+          }
+        }
+      }
+    }
+  
+    .rightSide {
+      @include flex(column); 
+      background-color: rgb(71, 62, 112);
+      flex: 1;
+      min-height: 100%;
+      height: 100%;
+      position: relative;
+      padding: 1em;
+      overflow: hidden;
+      border-radius: 10px;
+  
+      .icon {
+        display: none;
+        position: absolute;
+        top: 50px;
+        right: 40px;
+        z-index: 10;
+        font-size: 2em;
+        color: white;
+        cursor: pointer;
+        transition: color 0.3s;
+  
+        &:hover {
+          color: rgb(197, 197, 197);
+        }
+      }
+    }
+  }
+  
+  @media only screen and (max-width: 1050px) {
+    .messageRecipient {
+      transition: transform 0.5s ease;
+      transform: translateX(0); // Default, visible state
+      min-width: 95%;
+      min-height: 100%;
+      position: absolute;
+      z-index: 15;
+  
+      &.hidden {
+          transform: translateX(-110%); // Slide it off to the left
+      }
+  
+      &.shown {
+          transform: translateX(0); // Slide it back in
+      }
+    }
+  
+    .rightSide {
+  
+  
+      .icon {
+        display: block !important;
+      }
+    }
+  }

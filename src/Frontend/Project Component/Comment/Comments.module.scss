@@ -1,0 +1,169 @@
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(10px);
+    }
+}
+
+@mixin flex($direction: row, $justify: center, $align: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+.commentsContainer {
+    opacity: 0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    top: 0;
+    left: 0;
+    @include flex();
+
+    .commentsContent {
+        position: relative;
+        width: 60%;
+        min-width: 500px;
+        height: 70%;
+        background-color: rgb(43, 74, 120);
+        box-shadow: 0 2px 10px black;
+        border-radius: 10px;
+        overflow: hidden;
+        @include flex(column);
+        gap: 1em;
+
+        .icon {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            font-size: 2em;
+            cursor: pointer;
+            color: rgb(203, 66, 66);
+
+            &:hover {
+                color: red;
+            }
+        }
+
+        .commentsLogs {
+            flex: 1;
+            overflow-y: auto;
+            width: 95%;
+            margin-top: 1.5em;
+            border-radius: 10px;
+            color: white;
+
+            .noComments {
+                opacity: 0;
+                font-size: 1.5em;
+                text-align: center;
+                margin-top: 2em;
+
+                &.fadeIn {
+                    animation: fadeIn 0.5s ease-in-out both;
+                }
+            }
+
+            .comment {
+                width: 100%;
+                border-radius: 10px;
+                margin-bottom: 1em;
+
+                .commentUser {
+                    @include flex(row, flex-start, center);
+
+                    img {
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 50%;
+                        margin-right: 1em;
+                    }
+
+                    .username {
+                        font-size: 1.2em;
+                        font-weight: bold;
+
+                        span {
+                            font-size: 0.8em;
+                            font-weight: normal;
+                            color: rgb(179, 179, 179);
+                        }
+                    }
+                }
+
+                .commentText, .commentActions {
+                    font-size: 1.1em;
+                    margin-left: 10px;
+                    margin-top: -10px;
+                }
+
+
+                .commentActions {
+                    margin-top: 0.5em;
+
+                    .likesCount {
+                        color: white;
+                    }
+
+                    .action {
+                        margin-right: 1em;
+                        cursor: pointer;
+                        transition: filter 0.3s;
+
+                        &.heart {
+                            color:rgb(203, 66, 66);
+                        }
+
+                        &.reply {
+                            color: rgb(66, 203, 66);
+                        }
+
+                        &.delete {
+                            color: rgb(66, 141, 203);
+                        }
+
+                        &:hover {
+                            filter: brightness(80%);
+                        }
+                    }
+                }
+            }
+        }
+
+        .commentForm {
+            width: 95%;
+            margin-bottom: 1em;
+        }
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .commentsContainer {
+        .commentsContent {
+            min-width: 0 !important;
+            width: 100% !important;
+            height: 85%;
+
+            .commentForm {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 328px) {
+    .commentsContent {
+        .commentForm {
+            margin-bottom: 2.4em !important;
+        }
+    }
+}

@@ -1,0 +1,129 @@
+@mixin flex-center($flex-direction: column, $justify-content: center, $align-items: center) {
+    display: flex;
+    justify-content: $justify-content;
+    align-items: $align-items;
+    flex-direction: $flex-direction;
+}
+
+.sponsorContainer {
+    opacity: 0;
+    position: fixed;
+    @include flex-center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.648);
+    backdrop-filter: blur(5px);
+
+    .close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: rgb(255, 0, 0);
+    }
+
+    .sponsor {
+        position: relative;
+        @include flex-center(column);
+        width: 100%;
+        max-width: 600px;
+        min-height: 300px;
+        padding: 30px;
+        background-color: rgb(75, 111, 184);
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.546);
+
+        h1 {
+            text-align: center;
+            font-weight: bold;
+            color: white;
+            font-size: 2.5em;
+        }
+
+        p {
+            width: 80%;
+            font-size: 1.2em;
+            color: white;
+            text-align: center;
+
+            &.error {
+                color: rgb(255, 255, 255);
+                font-weight: bold;
+                width: 100%;
+            }
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .actions {
+            width: 100%;
+            @include flex-center(row);
+            gap: 20px;
+
+            .button {
+                margin-top: 20px;
+                padding: 10px 20px;
+                font-weight: bold;
+                font-size: 1.2rem;
+                border-radius: 10px;
+                background-color: black;
+                border: none;
+                color: white;
+                cursor: pointer;
+            
+                &.sponsorButton {
+                    background-color: rgb(55, 176, 55);
+                    transition: background-color 0.3s ease-in-out;
+            
+                    &:hover {
+                        background-color: rgb(24, 160, 24);
+                    }
+                }
+
+                &.cancel {
+                    background-color: rgb(255, 0, 0);
+                    transition: background-color 0.3s ease-in-out;
+            
+                    &:hover {
+                        background-color: rgb(169, 50, 50);
+                    }
+                }
+
+                &.buy {
+                    background-color: rgb(0, 179, 255);
+                    transition: background-color 0.3s ease-in-out;
+            
+                    &:hover {
+                        background-color: rgb(0, 153, 255);
+                    }
+                }
+            }
+        }
+    }
+
+    
+}
+
+// Media queries for responsiveness
+@media only screen and (max-width: 665px) {
+    .sponsor {
+        height: 100%;
+        border-radius: 0;
+    }
+
+    .close {
+        right: 50px;
+        top: 100px;
+        font-size: 2em;
+    }
+
+    p {
+        width: 90%;
+    }
+
+}

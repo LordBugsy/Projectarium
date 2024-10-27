@@ -1,0 +1,237 @@
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@mixin flex-center($flex-direction: column, $justifyContent: center, $alignItems: center) {
+    display: flex;
+    justify-content: $justifyContent;
+    align-items: $alignItems;
+    flex-direction: $flex-direction;
+}
+
+.followContainer {
+    opacity: 0;
+    position: fixed;
+    @include flex-center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.648);
+    backdrop-filter: blur(5px);
+}
+
+.follow {
+    position: relative;
+    @include flex-center(column);
+    width: 100%;
+    max-width: 600px;
+    min-height: 500px;
+    max-height: 500px;
+    padding: 30px;
+    background-color: rgb(36, 83, 121);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.546);
+}
+
+.contactHeading, .contactText, .legalCompliance {
+    text-align: center;
+    font-weight: 600;
+}
+
+.contactHeading {
+    font-weight: bold;
+}
+
+.contactText {
+    margin-top: -10px;
+}
+
+.information {
+    position: absolute;
+    left: 20px;
+    top: 10px;
+    font-size: 1.2rem;
+    color: white;
+}
+
+
+// Input and TextArea styling
+.input, .textArea {
+    outline: none;
+    border: none;
+    resize: none;
+    width: 100%;
+    padding: 10px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    border-radius: 10px;
+}
+
+.textArea {
+    margin-top: 20px;
+    height: 220px;
+}
+
+// Button base styles
+.button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    background-color: black;
+    border: none;
+    color: white;
+    cursor: pointer;
+
+    &.send {
+        background-color: rgb(55, 176, 55);
+        transition: background-color 0.3s ease-in-out;
+
+        &:hover {
+            background-color: rgb(24, 160, 24);
+        }
+    }
+}
+
+// Interactive elements
+.interact {
+    cursor: pointer;
+    color: rgb(57, 136, 201);
+}
+
+// Close icon styling
+.close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: rgb(255, 0, 0);
+}
+
+.error {
+    opacity: 0;
+    color: rgb(223, 69, 69);
+    font-weight: bold;
+    text-align: center;
+    width: 95%;
+    height: 100%;
+    position: absolute;
+    top: 95%;
+    font-size: 1.2em;
+    left: 10px;
+    transform: translateY(-50%);
+
+    &.fadeIn {
+        animation: fadeIn 0.8s ease-in-out both;
+    }
+}
+
+.fetchedDataContainer {
+    @include flex-center(column, flex-start, center);
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    margin-top: 2em;
+}
+
+.followData {
+    @include flex-center(row, flex-start, center);
+    width: 90%;
+    gap: 20px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+    padding: 10px;
+    
+    &:hover {
+        background-color: rgb(57, 136, 201);
+        
+    }
+
+    img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+
+    .usernameContent {
+        @include flex-center(row);
+        text-wrap: nowrap;
+        gap: 10px;
+
+        .username {
+            color: rgb(180, 180, 180);
+        }
+
+        .displayName {
+            font-weight: bold;
+            color: white;
+        }
+    }
+
+    .icon {
+        margin-left: 10px;
+        font-size: 0.8em;
+        color: white;
+        cursor: pointer;
+        transition: color 0.3s;
+    
+        &:hover {
+            color: rgb(177, 177, 177);
+        }
+    }
+    
+    .verified {
+        @extend .icon; // we get pre defined styles from .icon
+        margin-left: 0;
+        padding: 0;
+        cursor: default;
+    
+        &:hover {
+            color: white;
+        }
+    }
+}
+
+
+
+// Media queries for responsiveness
+@media only screen and (max-width: 665px) {
+    .follow {
+        height: 100%;
+        min-height: 0;
+        max-height: 100%;
+        border-radius: 0;
+    }
+
+    .close {
+        right: 50px;
+        top: 100px;
+        font-size: 2em;
+    }
+
+    .information {
+        left: 50px;
+        top: 100px;
+        font-size: 1.5rem;
+    }
+
+    .fetchedDataContainer {
+        margin-top: 8em;
+        margin-bottom: 5em;
+    }
+
+    .error {
+        top: 100%;
+    }
+}
