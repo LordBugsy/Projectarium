@@ -1,0 +1,14 @@
+PROJECTARIUM LICENCE
+This license governs the use of the Projectarium platform and its codebase. By accessing or using this project, you agree to the terms outlined below.
+
+PERMISSIONS
+- View and Learn: You may view the code and learn from its structure, design, and functionality.
+
+RESTRICTIONS
+- No Commercial Use: You may not sell, distribute, or use this project for any commercial purposes.
+- No Redistribution: You may not share, distribute, or make copies of this project, in whole or in part.
+- No Modification and Publication: You may not modify this project and publish it as your own work, either in original or modified form.
+- No Claim of Ownership: You may not claim ownership or credit for this project, whether in whole or in part.
+
+DISCLAIMER
+This project is provided "as is," without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose, and noninfringement. In no event shall the authors be liable for any claim, damages, or other liability arising from, out of, or in connection with the project or the use of the project.

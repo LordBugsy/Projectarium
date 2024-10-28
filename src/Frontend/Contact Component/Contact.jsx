@@ -15,8 +15,6 @@ const Contact = () => {
     const containerRef = useRef(null);
 
     const submitForm = (event) => {
-        console.log('Form submitted!');
-        // wip - send the form data to the server
         event.preventDefault();
         closeContact();
     }

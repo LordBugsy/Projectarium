@@ -7,7 +7,7 @@ import bcrypt from 'bcrypt';
 import { fileURLToPath } from 'url';
 
 // First of all, sorry for the long file, but I wanted to make sure that I covered as much as possible. For my future projects,
-// I will be splitting the routes into separate files to make it easier to manage. I will also be adding more comments to explain...
+// I will be splitting the routes into separate files to make it easier to manage.
 
 // This file is the entry point for the backend server. It will be used to handle all the API routes 
 // and interact with the database. For my projects, I use MongoDB because it is, in my opinion, the easiest one to use and set up. 
@@ -103,17 +103,8 @@ const chatLogs = new mongoose.Schema({
     messages: [{
         sender: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
         text: { type: String, required: true },
-    }], // Messages will be ordered by the date they were sent
+    }],
 }, { timestamps: true });
-
-// const privateMessagesSchema = new mongoose.Schema({
-//     chatID: { type: mongoose.Schema.Types.ObjectId, ref: 'ChatLogs' }, // Reference to the chat logs
-//     messages: [{
-//         sender: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-//         text: { type: String, required: true },
-//     }], // Messages will be ordered by the date they were sent
-// }, { timestamps: true });
-// might be useful at some point?
 
 const reportUserSchema = new mongoose.Schema({
     user: { // The user that is being reported
@@ -145,7 +136,6 @@ const User = mongoose.model('User', userSchema);
 const Project = mongoose.model('Project', projectSchema);
 const Comment = mongoose.model('Comment', commentsSchema);
 const ChatLogs = mongoose.model('ChatLogs', chatLogs);
-// const PrivateMessage = mongoose.model('PrivateMessage', privateMessagesSchema);
 const ReportUser = mongoose.model('ReportUser', reportUserSchema);
 const ReportProject = mongoose.model('ReportProject', reportProjectSchema);
 

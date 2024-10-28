@@ -39,7 +39,6 @@ const Sponsor = props => {
                 userID: localUserId,
             });
 
-            console.log(backendResponse.data);
             props.onDecision(true);
             
             if (containerRef.current) {
