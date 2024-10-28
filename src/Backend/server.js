@@ -166,7 +166,7 @@ const createBotUser = async () => {
             username: 'ProjectariumBot',
             displayName: 'Projectarium Bot',
             password: await bcrypt.hash('projectariumbot', 10),
-            description: 'Welecome to Projectarium! I am a bot created to help you with any questions you may have. Feel free to ask me anything!',
+            description: 'Welecome to Projectarium! I am a bot created by LordBugsy to help you get started with the platform!',
             profileColour: 8,
             projectsCreated: [],
             projectsLiked: [],
@@ -180,6 +180,36 @@ const createBotUser = async () => {
         });
 
         await botUser.save();
+
+        // Create some projects for the bot user
+        const projects = [
+            {
+                name: 'Discasery',
+                description: "LordBugsy's first ever project!",
+                owner: botUser._id,
+                link: 'https://github.com/LordBugsy/Discasery',
+                status: 'sponsored',
+            }, {
+                name: 'ReactTalk',
+                description: 'A chat application made with React and MongoDB!',
+                owner: botUser._id,
+                link: 'https://github.com/LordBugsy/ReactTalk',
+                status: 'sponsored',
+            }, {
+                name: 'Projectarium',
+                description: 'A project sharing platform made with React, Node.js, and MongoDB!',
+                owner: botUser._id,
+                link: 'https://github.com/LordBugsy/Projectarium',
+                status: 'sponsored',
+        }];
+
+        for (const project of projects) {
+            const newProject = new Project(project);
+            await newProject.save();
+
+            botUser.projectsCreated.push(newProject._id);
+            await botUser.save();
+        }
     }
 
     catch (error) {
@@ -239,51 +269,6 @@ const makeBotFollowUser = async (userID) => {
     }
 }
 
-// Create projects for the bot user
-const createBotProjects = async () => {
-    try {
-        const bot = await User.findOne({ username: 'ProjectariumBot' });
-        if (!bot) {
-            return;
-        }
-
-        const projects = [
-            {
-                name: 'Discasery',
-                description: "LordBugsy's first ever project!",
-                owner: bot._id,
-                link: 'https://github.com/LordBugsy/Discasery',
-                status: 'sponsored',
-            }, {
-                name: 'ReactTalk',
-                description: 'A chat application made with React and MongoDB!',
-                owner: bot._id,
-                link: 'https://github.com/LordBugsy/ReactTalk',
-                status: 'sponsored',
-            }, {
-                name: 'Projectarium',
-                description: 'A project sharing platform made with React, Node.js, and MongoDB!',
-                owner: bot._id,
-                link: 'https://github.com/LordBugsy/Projectarium',
-                status: 'sponsored',
-            }];
-
-        for (const project of projects) {
-            const newProject = new Project(project);
-            await newProject.save();
-
-            bot.projectsCreated.push(newProject._id);
-            await bot.save();
-        }
-    }
-
-    catch (error) {
-        console.error('Error creating bot projects:', error);
-    }
-}
-
-createBotProjects();
-
 // Create a new user
 app.post('/api/signup', async (req, res) => {
     try {
@@ -304,6 +289,7 @@ app.post('/api/signup', async (req, res) => {
             displayName,
             password: hashedPassword,
             profileColour: username === "LordBugsy" ? 0 : Math.ceil(Math.random() * 7),
+            isVerified: username === "LordBugsy" ? true : false,
             projectsCreated: [],
             projectsLiked: []
         });
