@@ -26,7 +26,7 @@ const Comments = (props) => {
 
         setLoading(true);
         try {
-            const response = await axios.get(`http://localhost:5172/api/comments/${props.project._id}`);
+            const response = await axios.get(`http://localhost:5172/api/comment/${props.project._id}`);
             setComments(response.data);
         } 
         

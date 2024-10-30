@@ -60,7 +60,7 @@ const Project = () => {
 
         const loadRecommendedProjects = async () => {
             try {
-                const response = await axios.get(`http://localhost:5172/api/random/projects`);
+                const response = await axios.get(`http://localhost:5172/api/project/random`);
                 updateRecommendedProjects(response.data);
             }
 

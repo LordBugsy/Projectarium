@@ -24,7 +24,7 @@ const MyAccount = () => {
     useEffect(() => {
         const loadProfile = async () => {
             try {
-                const response = await axios.get(`http://localhost:5172/api/userdetails/${localUserId}`);
+                const response = await axios.get(`http://localhost:5172/api/user/details/${localUserId}`);
                 setPopupState(response.data);
             } 
             

@@ -47,3 +47,7 @@ This project is provided under a custom license. Users are allowed to view and l
 
 ## Miscellaneous
 This project took me 2 entire months to complete! If you find any bugs, please let me know so I can fix them as soon as possible!
+Also, make sure that EVERY dynamic route (such as ``/api/:userID`` or ``*``) are at the end of your route file. If they aren't, your server might throw an error because dynamic routes act like a "Catch-All" route.
+
+Anyway, I hope you will have fun with **Projectarium**!
+Copyright 2024 LordBugsy. All Rights Reserved.

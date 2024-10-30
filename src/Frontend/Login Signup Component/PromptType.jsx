@@ -54,7 +54,7 @@ const PromptType = () => {
         
         if (type === 'signup') {
             try {
-                const response = await axios.post('http://localhost:5172/api/signup', {
+                const response = await axios.post('http://localhost:5172/api/user/signup', {
                     username: usernameRef.current.value,
                     displayName: displayNameRef.current.value,
                     password: passwordRef.current.value
@@ -91,7 +91,7 @@ const PromptType = () => {
 
         else {
             try {
-                const response = await axios.post('http://localhost:5172/api/login', {
+                const response = await axios.post('http://localhost:5172/api/user/login', {
                     username: loginUsernameRef.current.value,
                     password: loginPasswordRef.current.value
                 });

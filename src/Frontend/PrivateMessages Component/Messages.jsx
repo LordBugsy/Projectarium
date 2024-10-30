@@ -21,7 +21,7 @@ const Messages = () => {
     useEffect(() => {
         const loadAllPrivateChats = async () => {
             try {
-                const response = await axios.get(`http://localhost:5172/api/messages/${localUserId}`);
+                const response = await axios.get(`http://localhost:5172/api/chatlogs/${localUserId}`);
                 updatePrivateChats(response.data);
             } 
             

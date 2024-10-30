@@ -15,7 +15,7 @@ const Search = () => {
     useEffect(() => {
         const loadProjectsByQuery = async () => {
             try {
-                const response = await axios.get(`http://localhost:5172/api/projects/search/${query}`);
+                const response = await axios.get(`http://localhost:5172/api/project/search/${query}`);
                 setLoadedProjects(response.data);
             }
 

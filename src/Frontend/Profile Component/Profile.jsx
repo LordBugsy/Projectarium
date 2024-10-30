@@ -60,7 +60,7 @@ const Profile = () => {
 
     const sendPrivateMessage = async () => {
         try {
-            const response = await axios.post(`http://localhost:5172/api/message/open`, {
+            const response = await axios.post(`http://localhost:5172/api/chatlogs/open`, {
                 senderID: localUserId,
                 receiverID: userData._id,
             });
@@ -172,10 +172,10 @@ const Profile = () => {
                                     <button onClick={followUser} className={`${styles.button} ${styles.follow}`}>Follow</button>
                                 )}
                                 {isMutualFollow && <button onClick={sendPrivateMessage} className={`${styles.button} ${styles.message}`}>Message</button>}
-                                {userData._id !== localUserId && <button onClick={() => dispatch(setReportShown(true))} className={`${styles.button} ${styles.report}`}>Report</button>}
+                                {userData._id !== localUserId && userData.username !== "ProjectariumBot" && <button onClick={() => dispatch(setReportShown(true))} className={`${styles.button} ${styles.report}`}>Report</button>}
                                 <i onClick={toggleDropdown} className={`fa-solid fa-ellipsis-vertical ${styles.icon}`}></i>
                                 <div ref={dropdownRef} className={`${styles.dropdown} ${styles.hidden}`}>
-                                    <p onClick={() => dispatch(setReportShown(true))} className={styles.option}>Report</p>
+                                    {userData.username !== "ProjectariumBot" && <p onClick={() => dispatch(setReportShown(true))} className={styles.option}>Report</p>}
                                     {isMutualFollow && <p onClick={sendPrivateMessage} className={styles.option}>Message</p>}
 
                                     {isFollowing ? (

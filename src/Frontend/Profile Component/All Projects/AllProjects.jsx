@@ -17,7 +17,7 @@ const AllProjects = () => {
             setError(false);
 
             try {
-                const backendResponse = await axios.get(`http://localhost:5172/api/projects/user/${username}`);
+                const backendResponse = await axios.get(`http://localhost:5172/api/project/user/${username}`);
                 updateProjectsList(backendResponse.data);
             }
             

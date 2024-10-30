@@ -44,7 +44,7 @@ const Projectarium = () => {
 
         const loadProjectsMadeByUser = async () => {
             try {
-                const response = await axios.get(`http://localhost:5172/api/projects/${localUserId}`);
+                const response = await axios.get(`http://localhost:5172/api/project/${localUserId}`);
                 setYourProjects(response.data);
             }
 
@@ -55,7 +55,7 @@ const Projectarium = () => {
 
         const loadSponsoredProjects = async () => {
             try {
-                const response = await axios.get(`http://localhost:5172/api/projects/sponsored`);
+                const response = await axios.get(`http://localhost:5172/api/project/sponsored`);
                 setSponsoredProjects(response.data);
             }
 
@@ -66,7 +66,7 @@ const Projectarium = () => {
 
         const loadPopularProjects = async () => {
             try {
-                const response = await axios.get(`http://localhost:5172/api/projects/popular`);
+                const response = await axios.get(`http://localhost:5172/api/project/popular`);
                 setPopularProjects(response.data);
             }
 

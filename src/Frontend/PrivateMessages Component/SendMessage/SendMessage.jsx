@@ -57,7 +57,7 @@ const SendMessage = (props) => {
         if (!props.id) return;
     
         try {
-            const response = await axios.post(`http://localhost:5172/api/sendindm/${props.id}`, {
+            const response = await axios.post(`http://localhost:5172/api/chatlogs/send/${props.id}`, {
                 message: messageAreaRef.current.value,
                 sender: localUserId,
             });

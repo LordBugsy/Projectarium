@@ -36,7 +36,7 @@ const Publish = () => {
 
         setIsURLValid(true);
         try {
-            const response = await axios.post('http://localhost:5172/api/create', {
+            const response = await axios.post('http://localhost:5172/api/project/create', {
                 link: projectURL.current.value,
                 name: projectTitle.current.value,
                 description: projectDescription.current.value,

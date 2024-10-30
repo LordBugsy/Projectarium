@@ -13,7 +13,7 @@ const ChatLogs = (props) => {
 
 
         try {
-            const response = await axios.get(`http://localhost:5172/api/chatlogs/${props.id}`);
+            const response = await axios.get(`http://localhost:5172/api/chatlogs/groupChat/${props.id}`);
             updateChatLogs(response.data.messages);
         } 
         
