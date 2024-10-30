@@ -20,8 +20,9 @@ Projectarium is a platform where users can share their projects, discover other 
 ## Getting started
 ### Prerequisites
 - **Node:js**: Make sure Node.js is installed, you can install it [here](https://nodejs.org/en/download/package-manager)!
-- **MongoDB**: Make sure you have a MongoDB URI. If you do, add a ``.env`` file in the Backend folder and in that file, add the following line:
+- **MongoDB**: Make sure you have a MongoDB URI. If you do, add a ``.env`` file in the [Backend folder](./src/Backend/) and in that file, add the following line:
 ```bash
+# in .env
 MONGO_URI=mongodb+srv://<username>:<password>@cluster0.qk6mh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
 # <username> and <password> are your login details for the database.
 ```
@@ -30,7 +31,7 @@ MONGO_URI=mongodb+srv://<username>:<password>@cluster0.qk6mh.mongodb.net/?retryW
 
 1. Clone the git repository:
 ```bash
-git clone https://github.com/lordbugsy/Projectarium.git
+git clone https://github.com/LordBugsy/Projectarium.git
 cd Projectarium/projectarium
 ```
 

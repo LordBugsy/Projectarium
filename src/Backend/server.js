@@ -10,12 +10,11 @@ import reportRoutes from './Routes/reportRoutes.js';
 import chatLogsRoutes from './Routes/chatLogsRoutes.js';
 import commentRoutes from './Routes/commentRoutes.js';
 
-
 // Simulate __dirname in ES6 modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Define the path to the .env file
+// Define the path to the .env file (.env and server.js are in the same directory)
 const envPath = path.resolve(__dirname, '.env');
 
 // Load environment variables from .env file
@@ -40,10 +39,7 @@ app.use('/api/report', reportRoutes);
 app.use('/api/chatlogs', chatLogsRoutes);
 app.use('/api/comment', commentRoutes);
 
-
-
 app.use(express.static(path.join(__dirname, 'build')));
-
 
 app.get('*', (_req, res) => {
     console.error(`You've reached a route that doesn't exist. You entered: ${_req.originalUrl} via ${_req.method} method.`);
