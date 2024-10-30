@@ -7,7 +7,7 @@ Projectarium is a platform where users can share their projects, discover other 
 ## Features
 - **Project Sharing**: Users can upload and share their projects with the community.
 - **Likes and Comments**: Engage with projects by liking and commenting to provide feedback and appreciation.
-- **Private Messaging**: Connect directly with other users through real-time private messages.
+- **Private Messaging**: Connect directly with other users through private messages.
 - **Account Management**: Update profile information, including changing the account password.
 - **Project Search**: Find specific projects using the search feature.
 - **Sponsorship**: Sponsored projects are highlighted on Projectarium’s front page for increased visibility.
@@ -51,4 +51,5 @@ This project took me 2 entire months to complete! If you find any bugs, please l
 Also, make sure that EVERY dynamic route (such as ``/api/:userID`` or ``*``) are at the end of your route file. If they aren't, your server might throw an error because dynamic routes act like a "Catch-All" route.
 
 Anyway, I hope you will have fun with **Projectarium**!
+
 Copyright 2024 LordBugsy. All Rights Reserved.
