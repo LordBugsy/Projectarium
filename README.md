@@ -13,7 +13,7 @@ Projectarium is a platform where users can share their projects, discover other 
 - **Sponsorship**: Sponsored projects are highlighted on Projectarium’s front page for increased visibility.
 
 ## Technologies Used
-- **Frontend**: ReactJS
+- **Frontend**: ReactJS & Redux
 - **Backend**: Express
 - **Database**: MongoDB
 
