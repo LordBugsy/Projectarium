@@ -7,7 +7,7 @@ const PrivacyPolicy = () => {
                 <h1 className='componentTitle'>Privacy Policy</h1>
                 <p className={`${styles.desc} ${styles.lastUpdate}`}>Last Updated: 11/08/2024</p>
                 <h1 className={styles.headerRules}>
-                    Welcome to Discasery (the "Site"). This Privacy Policy explains how Discasery ("we," "us," "our") handles your information when 
+                    Welcome to Projectarium (the "Site"). This Privacy Policy explains how Projectarium ("we," "us," "our") handles your information when 
                     you visit our Site. The Site is a demonstration project designed to showcase how a website like this might work. <br />
                     <span className={styles.important}>Please note that we do not collect, store, or share any personal information from visitors to this Site.</span>
                 </h1>
